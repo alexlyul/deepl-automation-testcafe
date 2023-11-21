@@ -1,4 +1,4 @@
 node_modules/
 .idea/
-./result.json
-./result.yaml
+result.yaml
+result.json
