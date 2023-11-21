@@ -1,0 +1,17 @@
+{
+  "name": "deepl-auto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe src/deepl.spec.ts -L"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "testcafe": "^3.4.0"
+  },
+  "devDependencies": {
+    "yaml": "^2.3.4"
+  }
+}
