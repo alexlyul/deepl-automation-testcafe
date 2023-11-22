@@ -2,7 +2,7 @@ import {ClientFunction, Selector, t} from "testcafe"
 
 class DeeplModel {
     protected t: TestController;
-    srcLangBtnSelector = Selector('[data-testid="translator-source-lang-btn"]');
+    protected srcLangBtnSelector = Selector('[data-testid="translator-source-lang-btn"]');
     protected srcLangListBtnOption = Selector('[data-testid="translator-source-lang-list"] [data-testid^=translator-lang-option]');
     protected srcLangInput = Selector('[aria-labelledby="translation-source-heading"] d-textarea');
     protected targetLangBtnSelector = Selector('[data-testid="translator-target-lang-btn"]');
