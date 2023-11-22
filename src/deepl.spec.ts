@@ -5,11 +5,12 @@ import * as fs from "fs";
 import * as yaml from "yaml";
 
 
-let OUTPUT_FORMAT: 'yaml'|'json' = 'yaml';
-const SRC_LANGUAGE: keyof typeof languages = 'en';
+let OUTPUT_FORMAT: 'yaml' | 'json' = 'yaml';
+const SRC_LANGUAGE: keyof typeof languages = 'de';
 const TRANSLATIONS: string[] = [
-    'This is a test',
-    'This is a test 2',
+    'a test string',
+    'Another testing string',
+    'This is another test string',
 ];
 
 
@@ -22,19 +23,27 @@ test('translate to diff languages', async t => {
 
     await t.maximizeWindow();
     const d = new DeeplModel(t);
-    await d.selectSrcLang(SRC_LANGUAGE);
+    await d.selectSrcLang(languages[SRC_LANGUAGE]);
 
     for (const srcString of TRANSLATIONS) {
+        await d.typeSrcText(srcString);
+
         for (const [langKey, targetLanguage] of Object.entries(languages)) {
             if (!result[srcString]) {
                 result[srcString] = {};
             }
-            await d.typeSrcText(srcString);
+
+            if (langKey === SRC_LANGUAGE) {
+                result[srcString][langKey] = srcString;
+                continue;
+            }
+
             await d.selectTargetLang(targetLanguage);
             await t.wait(1000);
             result[srcString][langKey] = await d.getTranslatedText();
         }
     }
+
 
     switch (OUTPUT_FORMAT) {
         case "json":

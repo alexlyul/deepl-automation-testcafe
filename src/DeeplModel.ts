@@ -27,7 +27,9 @@ class DeeplModel {
 
     protected async textToClipboard(text: string) {
         const copy = ClientFunction((text: string) => {
-            navigator.clipboard.writeText(text)
+            return new Promise(resolve => {
+                navigator.clipboard.writeText(text).then(resolve)
+            })
         })
 
         return copy(text);
