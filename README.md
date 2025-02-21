@@ -1,0 +1,1 @@
+![deepl-atomation-tool](https://github.com/alexlyul/deepl-automation-testcafe/blob/master/.preview/ezgif-6ee282376dd6fd.webp?raw=true)
